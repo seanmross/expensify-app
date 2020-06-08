@@ -7,17 +7,18 @@ import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 import getFilteredExpenses from './selectors/expenses';
+import { Provider } from 'react-redux';
 
 const store = configureStore();
 
-store.subscribe( () => {
-    const state = store.getState();
-    const filteredExpenses = getFilteredExpenses(state.expenses, state.filters)
-    console.log(filteredExpenses);
-})
+store.dispatch(addExpense({ description: "Water bill", amount: 4500 }));
+store.dispatch(addExpense({ description: "Rent", amount: 109500 }));
+store.dispatch(addExpense({ description: "Gas bill", createdAt: 1000 }));
 
-store.dispatch(addExpense({ description: "Water bill" }));
-store.dispatch(addExpense({ description: "Gas bill" }));
-store.dispatch(setTextFilter("water"));
+const template = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+);
 
-ReactDOM.render(<AppRouter />, document.getElementById("app-root"));
+ReactDOM.render(template, document.getElementById("app-root"));
