@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Expense = ({ id, description, amount, createdAt }) => (
   <div>
-    <Link to={`/edit/${id}`}>
-      <h3>{description}</h3>
-    </Link>
+    <h3>
+      <Link to={`/edit/${id}`}>{description}</Link>
+    </h3>
     <p>
       {amount} - {createdAt}
     </p>
