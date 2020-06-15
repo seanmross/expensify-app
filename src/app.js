@@ -8,6 +8,7 @@ import { addExpense } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 import getFilteredExpenses from './selectors/expenses';
 import { Provider } from 'react-redux';
+import './firebase/firebase';
 
 const store = configureStore();
 
